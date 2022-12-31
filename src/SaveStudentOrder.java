@@ -7,17 +7,9 @@ public class SaveStudentOrder {
         studentOrder.wifeFirstName = "Alla";
         studentOrder.wifeLastName = "Nevredimova";
 
-        StudentOrder studentOrder2 = new StudentOrder();
-        studentOrder2.husbandFirstName = "Mars";
-        studentOrder2.husbandLastName = "Marsov";
-        studentOrder2.wifeFirstName = "Zuzzha";
-        studentOrder2.wifeLastName = "Zuzzheva";
-
         long ans = saveStudentOrder(studentOrder);
         System.out.println(ans);
 
-        long ans2 = saveStudentOrder(studentOrder2);
-        System.out.println(ans2);
     }
 
     static long saveStudentOrder(StudentOrder studentOrder) {
