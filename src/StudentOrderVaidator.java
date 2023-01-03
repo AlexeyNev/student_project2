@@ -2,18 +2,32 @@
 public class StudentOrderVaidator {
     public static void main(String[] args) {
         checkAll();
-
     }
 
     static void checkAll() {
-        StudentOrder so = readStudentOrder();
 
-        AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding answerWedding = checkWedding(so);
-        AnswerChildren answerChildren = checkChildren(so);
-        AnswerStudent answerStudent = checkStudent(so);
+        while (true) {
+            StudentOrder so = readStudentOrder();
+            System.out.println("Start");
 
-        sendMail(so);
+            if (so == null) {
+                break;
+            }
+
+            System.out.println("finish");
+
+            AnswerCityRegister cityAnswer = checkCityRegister(so);
+            if (!cityAnswer.success) {
+               continue;
+            }
+
+            AnswerWedding answerWedding = checkWedding(so);
+            AnswerChildren answerChildren = checkChildren(so);
+            AnswerStudent answerStudent = checkStudent(so);
+
+            sendMail(so);
+        }
+        System.out.println("finish2");
     }
 
 
@@ -25,6 +39,7 @@ public class StudentOrderVaidator {
     static AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
         System.out.println("checkCityRegister is running");
         AnswerCityRegister ans = new AnswerCityRegister();
+        ans.success = false;
         return ans;
     }
 
@@ -44,6 +59,6 @@ public class StudentOrderVaidator {
     }
 
     static void sendMail(StudentOrder studentOrder) {
-
+        System.out.println("почта отправлена");
     }
 }
