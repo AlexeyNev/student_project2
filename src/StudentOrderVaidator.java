@@ -8,17 +8,15 @@ public class StudentOrderVaidator {
 
         while (true) {
             StudentOrder so = readStudentOrder();
-            System.out.println("Start");
 
             if (so == null) {
                 break;
             }
 
-            System.out.println("finish");
-
             AnswerCityRegister cityAnswer = checkCityRegister(so);
             if (!cityAnswer.success) {
-               continue;
+//               continue;
+                break;
             }
 
             AnswerWedding answerWedding = checkWedding(so);
@@ -27,7 +25,6 @@ public class StudentOrderVaidator {
 
             sendMail(so);
         }
-        System.out.println("finish2");
     }
 
 
@@ -37,25 +34,32 @@ public class StudentOrderVaidator {
     }
 
     static AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
-        System.out.println("checkCityRegister is running");
-        AnswerCityRegister ans = new AnswerCityRegister();
-        ans.success = false;
+        CityRegisterValidator crv = new CityRegisterValidator();
+        crv.hostName = "host1";
+        crv.login = "log";
+        crv.password = "1234";
+
+        CityRegisterValidator crv2 = new CityRegisterValidator();
+        crv2.hostName = "host2";
+        crv2.login = "login";
+        crv2.password = "5678";
+
+        AnswerCityRegister ans = crv.checkCityRegister(studentOrder);
+        AnswerCityRegister ans2 = crv2.checkCityRegister(studentOrder);
+
         return ans;
     }
 
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
-        System.out.println("checkWedding is running");
-        return new AnswerWedding();
+        return WeddingValidator.checkWedding(studentOrder);
     }
 
     static AnswerChildren checkChildren(StudentOrder studentOrder) {
-        System.out.println("checkChildren is running");
-        return new AnswerChildren();
+        return ChildrenValidator.checkChildren(studentOrder);
     }
 
     static AnswerStudent checkStudent(StudentOrder studentOrder) {
-        System.out.println("checkStudent is running");
-        return new AnswerStudent();
+        return StudentValidator.checkStudent(studentOrder);
     }
 
     static void sendMail(StudentOrder studentOrder) {
