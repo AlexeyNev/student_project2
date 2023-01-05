@@ -1,7 +1,12 @@
+/**
+ * protected - уровень доступа, видимость которого в пределах всех классов,
+ * находящихся в том же пакете, что и наш и в пределах всех классов-наследников нашего класса.
+ */
+
 public class CityRegisterValidator {
-    String hostName;
-    String login;
-    String password;
+    public String hostName;
+    public String login;
+    public String password;
 
      AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
         System.out.println("checkCityRegister is running: "

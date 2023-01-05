@@ -51,18 +51,22 @@ public class StudentOrderVaidator {
     }
 
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
-        return WeddingValidator.checkWedding(studentOrder);
+        WeddingValidator weddingValidator = new WeddingValidator();
+        return weddingValidator.checkWedding(studentOrder);
     }
 
     static AnswerChildren checkChildren(StudentOrder studentOrder) {
-        return ChildrenValidator.checkChildren(studentOrder);
+        ChildrenValidator childrenValidator = new ChildrenValidator();
+        return childrenValidator.checkChildren(studentOrder);
     }
 
     static AnswerStudent checkStudent(StudentOrder studentOrder) {
-        return StudentValidator.checkStudent(studentOrder);
+        StudentValidator studentValidator = new StudentValidator();
+        return studentValidator.checkStudent(studentOrder);
     }
 
     static void sendMail(StudentOrder studentOrder) {
-        System.out.println("почта отправлена");
+        MailSender mailSender = new MailSender();
+        mailSender.sendMail(studentOrder);
     }
 }
