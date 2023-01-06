@@ -5,10 +5,10 @@ import edu.javacourse.studentorder.domain.StudentOrder;
 public class SaveStudentOrder {
     public static void main(String[] args) {
         StudentOrder studentOrder = new StudentOrder();
-        studentOrder.husbandFirstName = "Alex";
-        studentOrder.husbandLastName = "Nevredimov";
-        studentOrder.wifeFirstName = "Alla";
-        studentOrder.wifeLastName = "Nevredimova";
+        studentOrder.setHusbandFirstName("Alex");
+        studentOrder.setHusbandLastName("Nevredimov");
+        studentOrder.setWifeFirstName("Alla");
+        studentOrder.setWifeLastName("Nevredimova");
 
         long ans = saveStudentOrder(studentOrder);
         System.out.println(ans);
@@ -17,7 +17,7 @@ public class SaveStudentOrder {
 
     static long saveStudentOrder(StudentOrder studentOrder) {
         long answer = 199;
-        System.out.println("saveStudentOrder: " + studentOrder.husbandLastName);
+        System.out.println("saveStudentOrder: " + studentOrder.getHusbandLastName());
         return answer;
     }
 }
