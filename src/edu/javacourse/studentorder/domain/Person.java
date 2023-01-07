@@ -2,12 +2,19 @@ package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 
+/**
+ * protected доступен в потомках этого класса но и никому не виден кроме потомков
+ */
 public class Person {
-    private String surname;
-    private String givenName;
+    protected String surname;
+    protected String givenName;
     private String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
+
+    public String getPersonString() {
+        return surname + " " + givenName;
+    }
 
     public String getSurname() {
         return surname;
