@@ -36,6 +36,11 @@ public class StudentOrderVaidator {
             System.out.println();
             checkOneOrder(soArray[i]);
         }
+
+//        for (StudentOrder so : soArray) {
+//            System.out.println();
+//            checkOneOrder(so);
+//        }
     }
 
     public StudentOrder[] readStudentOrders() {
