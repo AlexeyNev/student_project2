@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 /**
  * protected доступен в потомках этого класса но и никому не виден кроме потомков
+ * static - это поля и методы которые относятся к классу, а не к объекту.
+ * abstract - если мы так объявили класс, значит мы не сможем создавать объекты этого класса.
  */
-public class Person {
+public abstract class Person {
     protected String surname;
     protected String givenName;
     private String patronymic;

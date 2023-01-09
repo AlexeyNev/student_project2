@@ -1,5 +1,6 @@
 package edu.javacourse.studentorder;
 
+import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.other.Adult;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
@@ -19,10 +20,11 @@ public class SaveStudentOrder {
         return answer;
     }
 
-    static StudentOrder buildStudentOrder() {
+    public static StudentOrder buildStudentOrder() {
         StudentOrder studentOrder = new StudentOrder();
 
         Adult husband = new Adult();
+
 
 
 //        studentOrder.setHusband(husband);
