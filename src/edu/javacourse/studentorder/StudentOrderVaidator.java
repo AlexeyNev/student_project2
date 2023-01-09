@@ -30,52 +30,50 @@ public class StudentOrderVaidator {
     }
 
     public void checkAll() {
+        StudentOrder[] soArray = readStudentOrders();
 
-        while (true) {
-            StudentOrder so = readStudentOrder();
-
-            if (so == null) {
-                break;
-            }
-
-            AnswerCityRegister cityAnswer = checkCityRegister(so);
-            if (!cityAnswer.success) {
-//               continue;
-                break;
-            }
-
-            AnswerWedding answerWedding = checkWedding(so);
-            AnswerChildren answerChildren = checkChildren(so);
-            AnswerStudent answerStudent = checkStudent(so);
-
-            sendMail(so);
+        for (int i = 0; i < soArray.length; i++) {
+            System.out.println();
+            checkOneOrder(soArray[i]);
         }
     }
 
+    public StudentOrder[] readStudentOrders() {
+        StudentOrder[] soArray = new StudentOrder[3];
 
-    public StudentOrder readStudentOrder() {
-        SaveStudentOrder.buildStudentOrder();
-        StudentOrder studentOrder = new StudentOrder();
-        return studentOrder;
+        for (int i = 0; i < soArray.length; i++) {
+            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
+        }
+        return soArray;
     }
 
-    public AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
-        return cityRegisterVal.checkCityRegister(studentOrder);
+    public void checkOneOrder(StudentOrder so) {
+        AnswerCityRegister cityAnswer = checkCityRegister(so);
+
+        AnswerWedding answerWedding = checkWedding(so);
+        AnswerChildren answerChildren = checkChildren(so);
+        AnswerStudent answerStudent = checkStudent(so);
+
+        sendMail(so);
     }
 
-    public AnswerWedding checkWedding(StudentOrder studentOrder) {
-        return weddingVal.checkWedding(studentOrder);
+    public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        return cityRegisterVal.checkCityRegister(so);
     }
 
-    public AnswerChildren checkChildren(StudentOrder studentOrder) {
-        return childrenVal.checkChildren(studentOrder);
+    public AnswerWedding checkWedding(StudentOrder so) {
+        return weddingVal.checkWedding(so);
     }
 
-    public AnswerStudent checkStudent(StudentOrder studentOrder) {
-        return studentVal.checkStudent(studentOrder);
+    public AnswerChildren checkChildren(StudentOrder so) {
+        return childrenVal.checkChildren(so);
     }
 
-    public void sendMail(StudentOrder studentOrder) {
-        mailSender.sendMail(studentOrder);
+    public AnswerStudent checkStudent(StudentOrder so) {
+        return studentVal.checkStudent(so);
+    }
+
+    public void sendMail(StudentOrder so) {
+        mailSender.sendMail(so);
     }
 }

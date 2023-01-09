@@ -10,8 +10,9 @@ import edu.javacourse.studentorder.domain.StudentOrder;
 
 public class CityRegisterValidator {
     public String hostName;
-    public String login;
-    public String password;
+    protected int port;
+    private String login;
+    String password;
 
      public AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
         System.out.println("checkCityRegister is running: "
