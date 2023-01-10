@@ -8,27 +8,27 @@ import java.time.LocalDate;
  * abstract - если мы так объявили класс, значит мы не сможем создавать объекты этого класса.
  */
 public abstract class Person {
-    protected String surname;
-    protected String givenName;
+
+    private String surName;
+    private String givenName;
     private String patronymic;
     private LocalDate dateOfBirth;
     private Address address;
 
-    public Person() {
-        System.out.println("Person is created");
+    public Person(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+        this.surName = surName;
+        this.givenName = givenName;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
     }
 
 
-    public String getPersonString() {
-        return surname + " " + givenName;
+    public String getSurName() {
+        return surName;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public String getGivenName() {

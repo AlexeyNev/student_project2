@@ -3,9 +3,14 @@ package edu.javacourse.studentorder.domain;
 import java.time.LocalDate;
 
 public class Child extends Person {
+
     private String certificateNumber;
     private LocalDate issueDate;
     private String issueDepartment;
+
+    public Child(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+        super(surName, givenName, patronymic, dateOfBirth);
+    }
 
     public String getCertificateNumber() {
         return certificateNumber;
