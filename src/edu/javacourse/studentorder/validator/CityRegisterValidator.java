@@ -1,6 +1,7 @@
 package edu.javacourse.studentorder.validator;
 
 import edu.javacourse.studentorder.domain.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.Person;
 import edu.javacourse.studentorder.domain.StudentOrder;
 
 /**
@@ -13,12 +14,20 @@ public class CityRegisterValidator {
     protected int port;
     private String login;
     String password;
+    private CityRegisterChecker personChecker;
 
-     public AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
-        System.out.println("checkCityRegister is running: "
-                + hostName + ", " + login + ", " + password);
+    public CityRegisterValidator() {
+        personChecker = new RealCityRegisterChecker();
+    }
+
+
+    public AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
+        personChecker.checkPerson(studentOrder.getHusband());
+        personChecker.checkPerson(studentOrder.getWife());
+        personChecker.checkPerson(studentOrder.getChild());
+
+
         AnswerCityRegister ans = new AnswerCityRegister();
-        ans.success = false;
         return ans;
     }
 }
