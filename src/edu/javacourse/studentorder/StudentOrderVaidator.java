@@ -31,16 +31,9 @@ public class StudentOrderVaidator {
 
     public void checkAll() {
         StudentOrder[] soArray = readStudentOrders();
-
-        for (int i = 0; i < soArray.length; i++) {
-            System.out.println();
-            checkOneOrder(soArray[i]);
+        for (StudentOrder so : soArray) {
+            checkOneOrder(so);
         }
-
-//        for (StudentOrder so : soArray) {
-//            System.out.println();
-//            checkOneOrder(so);
-//        }
     }
 
     public StudentOrder[] readStudentOrders() {
@@ -54,12 +47,11 @@ public class StudentOrderVaidator {
 
     public void checkOneOrder(StudentOrder so) {
         AnswerCityRegister cityAnswer = checkCityRegister(so);
+//        AnswerWedding answerWedding = checkWedding(so);
+//        AnswerChildren answerChildren = checkChildren(so);
+//        AnswerStudent answerStudent = checkStudent(so);
 
-        AnswerWedding answerWedding = checkWedding(so);
-        AnswerChildren answerChildren = checkChildren(so);
-        AnswerStudent answerStudent = checkStudent(so);
-
-        sendMail(so);
+//        sendMail(so);
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {

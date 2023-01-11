@@ -12,14 +12,11 @@ import edu.javacourse.studentorder.domain.StudentOrder;
  */
 
 public class CityRegisterValidator {
-    public String hostName;
-    protected int port;
-    private String login;
-    String password;
+
     private CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
-        personChecker = new RealCityRegisterChecker();
+        personChecker = new FakeCityRegisterChecker();
     }
 
 
@@ -29,9 +26,8 @@ public class CityRegisterValidator {
             CityRegisterCheckerResponse wif = personChecker.checkPerson(studentOrder.getWife());
             CityRegisterCheckerResponse chil = personChecker.checkPerson(studentOrder.getChild());
         } catch (CityRegisterException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(System.out);
         }
-
         AnswerCityRegister ans = new AnswerCityRegister();
         return ans;
     }
