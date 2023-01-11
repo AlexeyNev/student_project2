@@ -1,9 +1,14 @@
 package edu.javacourse.studentorder.validator;
 
-import edu.javacourse.studentorder.Exception.CityRegisterException;
+import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegister;
+import edu.javacourse.studentorder.domain.register.AnswerCityRegisterItem;
+import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
+import edu.javacourse.studentorder.exception.CityRegisterException;
 import edu.javacourse.studentorder.domain.*;
+import edu.javacourse.studentorder.validator.register.CityRegisterChecker;
+import edu.javacourse.studentorder.validator.register.FakeCityRegisterChecker;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,31 +25,23 @@ public class CityRegisterValidator {
     }
 
 
-    public AnswerCityRegister checkCityRegister (StudentOrder studentOrder) {
+    public AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
+        AnswerCityRegister ans = new AnswerCityRegister();
+
+        ans.addItem(checkPerson(studentOrder.getHusband()));
+        ans.addItem(checkPerson(studentOrder.getWife()));
+        for (Child child : studentOrder.getChildren()) {
+            ans.addItem(checkPerson(child));
+        }
+        return ans;
+    }
+
+    private AnswerCityRegisterItem checkPerson(Person person) {
         try {
-            CityRegisterCheckerResponse hus = personChecker.checkPerson(studentOrder.getHusband());
-            CityRegisterCheckerResponse wif = personChecker.checkPerson(studentOrder.getWife());
-
-            List<Child> children = studentOrder.getChildren();
-
-            for (Child child : children) {
-                CityRegisterCheckerResponse chil = personChecker.checkPerson(child);
-            }
-
-//            for (Iterator<Child> it = children.iterator(); it.hasNext();) {
-//                Child child = it.next();
-//                CityRegisterCheckerResponse chil = personChecker.checkPerson(child);
-//            }
-
-//            for (int i = 0; i < studentOrder.getChildren().size(); i++) {
-//                CityRegisterCheckerResponse chil =
-//                        personChecker.checkPerson(children.get(i));
-//            }
-
+            CityRegisterResponse cans = personChecker.checkPerson(person);
         } catch (CityRegisterException ex) {
             ex.printStackTrace(System.out);
         }
-        AnswerCityRegister ans = new AnswerCityRegister();
-        return ans;
+        return null;
     }
 }

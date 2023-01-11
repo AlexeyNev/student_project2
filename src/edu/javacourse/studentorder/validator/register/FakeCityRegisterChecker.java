@@ -1,12 +1,12 @@
-package edu.javacourse.studentorder.validator;
+package edu.javacourse.studentorder.validator.register;
 
-import edu.javacourse.studentorder.Exception.CityRegisterException;
+import edu.javacourse.studentorder.domain.register.CityRegisterResponse;
+import edu.javacourse.studentorder.exception.CityRegisterException;
 import edu.javacourse.studentorder.domain.Adult;
 import edu.javacourse.studentorder.domain.Child;
-import edu.javacourse.studentorder.domain.CityRegisterCheckerResponse;
 import edu.javacourse.studentorder.domain.Person;
 
-public class FakeCityRegisterChecker implements CityRegisterChecker{
+public class FakeCityRegisterChecker implements CityRegisterChecker {
 
     public static final String GOOD_1 = "1000";
     public static final String GOOD_2 = "2000";
@@ -16,8 +16,8 @@ public class FakeCityRegisterChecker implements CityRegisterChecker{
     public static final String ERROR_2 = "2002";
 
     @Override
-    public CityRegisterCheckerResponse checkPerson(Person person) throws CityRegisterException {
-        CityRegisterCheckerResponse res = new CityRegisterCheckerResponse();
+    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException {
+        CityRegisterResponse res = new CityRegisterResponse();
 
         if (person instanceof Adult) {
             Adult tmp = (Adult) person;
