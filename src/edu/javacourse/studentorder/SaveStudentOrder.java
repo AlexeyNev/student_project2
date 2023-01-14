@@ -1,9 +1,6 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.domain.Address;
-import edu.javacourse.studentorder.domain.Adult;
-import edu.javacourse.studentorder.domain.Child;
-import edu.javacourse.studentorder.domain.StudentOrder;
+import edu.javacourse.studentorder.domain.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,16 +10,6 @@ import java.time.LocalDate;
 
 public class SaveStudentOrder {
     public static void main(String[] args) throws Exception {
-        Connection con = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/jc_student",
-                "postgres", "1234");
-
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM jc_street");
-        while (rs.next()) {
-            System.out.println(rs.getLong(1) + ":" + rs.getString(2));
-        }
-
 //        StudentOrder studentOrder = new StudentOrder();
 //        long ans = saveStudentOrder(studentOrder);
 //        System.out.println(ans);
@@ -44,7 +31,8 @@ public class SaveStudentOrder {
         so.setMarriageDate(LocalDate.of(2016, 7, 4));
         so.setMarriageOffice("Отдел ЗАГС");
 
-        Address address = new Address("195000", "Заневский пр.", "12", "", "142");
+        Street street = new Street(1L, "First street");
+        Address address = new Address("195000", street, "12", "", "142");
 
         /**
          * Муж
