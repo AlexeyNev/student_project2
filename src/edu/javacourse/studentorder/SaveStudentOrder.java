@@ -13,7 +13,6 @@ import java.time.LocalDate;
 
 public class SaveStudentOrder {
     public static void main(String[] args) throws Exception {
-        Class.forName("org.postgresql.Driver");
         Connection con = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/jc_student",
                 "postgres", "1234");
